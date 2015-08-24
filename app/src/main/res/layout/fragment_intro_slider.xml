@@ -4,7 +4,7 @@
     android:weightSum="10"
     android:orientation="horizontal"
     android:id="@+id/az"
-    tools:context="pk.edu.pucit.mian.loginapp.IntroSlider"
+    tools:context="pk.EA.Scenario.app.Etiquette.IntroSlider"
     android:layout_height="wrap_content"
     android:layout_width="fill_parent"
     xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">

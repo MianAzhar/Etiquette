@@ -4,7 +4,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
     defaultConfig {
-        applicationId 'pk.edu.pucit.mian.loginapp'
+        applicationId 'pk.EA.Scenario.app.Etiquette'
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1

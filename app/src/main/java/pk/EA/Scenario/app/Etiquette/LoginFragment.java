@@ -1,4 +1,4 @@
-package pk.edu.pucit.mian.loginapp;
+package pk.EA.Scenario.app.Etiquette;
 
 
 import android.app.Activity;

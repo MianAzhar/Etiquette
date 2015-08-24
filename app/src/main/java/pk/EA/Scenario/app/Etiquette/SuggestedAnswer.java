@@ -1,4 +1,4 @@
-package pk.edu.pucit.mian.loginapp;
+package pk.EA.Scenario.app.Etiquette;
 
 
 import android.os.Bundle;
@@ -11,24 +11,19 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IntroSlider extends android.support.v4.app.Fragment {
+public class SuggestedAnswer extends android.support.v4.app.Fragment {
 
 
-    public IntroSlider() {
+    public SuggestedAnswer() {
         // Required empty public constructor
     }
 
-    public static android.support.v4.app.Fragment getInstance(int position)
-    {
-        return new IntroSlider();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_intro_slider, container, false);
+        return inflater.inflate(R.layout.fragment_suggested_answer, container, false);
     }
 
 
