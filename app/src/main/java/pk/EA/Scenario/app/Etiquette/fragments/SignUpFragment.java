@@ -101,8 +101,8 @@ public class SignUpFragment extends android.support.v4.app.Fragment implements
             LoginFragment newFrag = new LoginFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-
-            trans.replace(R.id.fragment_container, newFrag, "signupFragment");
+            getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            trans.replace(R.id.fragment_container, newFrag, "loginFragment");
             //trans.addToBackStack(null);
             //getActivity().getSupportFragmentManager().popBackStack();
             trans.commit();

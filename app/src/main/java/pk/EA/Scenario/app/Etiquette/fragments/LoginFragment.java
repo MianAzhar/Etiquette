@@ -173,8 +173,8 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
                                                 String id = object.getString("id");
 
                                                 new SigninAPI().execute(email, "123456789", "facebook");
+                                            } catch (Exception ex) {
                                             }
-                                            catch (Exception ex){}
                                         }
                                     });
                             Bundle parameters = new Bundle();
@@ -190,8 +190,7 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
 
                     @Override
                     public void onCancel() {
-                        if(progressDialog != null)
-                        {
+                        if (progressDialog != null) {
                             progressDialog.dismiss();
                             progressDialog = null;
                         }
@@ -200,8 +199,7 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
 
                     @Override
                     public void onError(FacebookException exception) {
-                        if(progressDialog != null)
-                        {
+                        if (progressDialog != null) {
                             progressDialog.dismiss();
                             progressDialog = null;
                         }
@@ -359,7 +357,7 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             SignUpFragment newFrag = new SignUpFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-
+            getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             trans.replace(R.id.fragment_container, newFrag, "loginFragment");
             //trans.addToBackStack(null);
             //getActivity().getSupportFragmentManager().popBackStack();
