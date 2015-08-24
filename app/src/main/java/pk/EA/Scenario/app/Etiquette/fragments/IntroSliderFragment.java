@@ -1,4 +1,4 @@
-package pk.EA.Scenario.app.Etiquette;
+package pk.EA.Scenario.app.Etiquette.fragments;
 
 
 import android.os.Bundle;
@@ -7,23 +7,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import pk.EA.Scenario.app.Etiquette.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CorrectAnswer extends android.support.v4.app.Fragment {
+public class IntroSliderFragment extends android.support.v4.app.Fragment {
 
 
-    public CorrectAnswer() {
+    public IntroSliderFragment() {
         // Required empty public constructor
     }
 
+    public static android.support.v4.app.Fragment getInstance(int position)
+    {
+        return new IntroSliderFragment();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_correct_answer, container, false);
+
+        return inflater.inflate(R.layout.fragment_intro_slider, container, false);
     }
 
 

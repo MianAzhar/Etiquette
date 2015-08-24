@@ -1,4 +1,4 @@
-package pk.EA.Scenario.app.Etiquette;
+package pk.EA.Scenario.app.Etiquette.fragments;
 
 
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import pk.EA.Scenario.app.Etiquette.ListAdapter;
+import pk.EA.Scenario.app.Etiquette.R;
 
 
 /**

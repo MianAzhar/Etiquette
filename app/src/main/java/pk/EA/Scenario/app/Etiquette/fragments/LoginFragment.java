@@ -1,4 +1,4 @@
-package pk.EA.Scenario.app.Etiquette;
+package pk.EA.Scenario.app.Etiquette.fragments;
 
 
 import android.app.Activity;
@@ -57,6 +57,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import pk.EA.Scenario.app.Etiquette.R;
 
 
 /**
@@ -322,6 +324,15 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             SigninAPI api = new SigninAPI();
             api.execute(email, "123456789", "google");
 
+        }
+        else
+        {
+            if(progressDialog != null)
+            {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+            Toast.makeText(getActivity(), getString(R.string.unable_login), Toast.LENGTH_SHORT).show();
         }
 
         // Show the signed-in UI

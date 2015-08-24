@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="pk.EA.Scenario.app.Etiquette.PopularFragment">
+    android:layout_height="match_parent" tools:context="pk.EA.Scenario.app.Etiquette.fragments.PopularFragment">
 
 
     <RelativeLayout
@@ -23,16 +23,6 @@
             android:layout_marginLeft="20dp"
             android:layout_centerVertical="true"
             android:src="@drawable/leftmenu" />
-
-        <!--
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView32"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/popularheader" />
-            -->
 
         <TextView
             android:layout_width="wrap_content"

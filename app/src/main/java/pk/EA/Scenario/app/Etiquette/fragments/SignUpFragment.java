@@ -1,4 +1,4 @@
-package pk.EA.Scenario.app.Etiquette;
+package pk.EA.Scenario.app.Etiquette.fragments;
 
 
 import android.app.Fragment;
@@ -32,6 +32,8 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
+
+import pk.EA.Scenario.app.Etiquette.R;
 
 
 /**

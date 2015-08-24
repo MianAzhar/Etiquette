@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
 
+import pk.EA.Scenario.app.Etiquette.fragments.IntroductionFragment;
+import pk.EA.Scenario.app.Etiquette.fragments.LoginFragment;
+
 
 public class MainActivity extends ActionBarActivity implements
         View.OnClickListener {

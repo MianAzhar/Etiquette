@@ -18,7 +18,7 @@ public class ListAdapter extends ArrayAdapter<String>
     int[] resources;
     ArrayList<String> textList;
     Context context;
-    ListAdapter(Context c, ArrayList<String> text , int[] res)
+    public ListAdapter(Context c, ArrayList<String> text, int[] res)
     {
         super(c , R.layout.list_item, R.id.detailText, text);
         context = c;

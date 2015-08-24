@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import pk.EA.Scenario.app.Etiquette.fragments.IntroSliderFragment;
+
 /**
  * Created by Mian on 8/15/2015.
  */
@@ -20,7 +22,7 @@ public class IntroPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override public Fragment getItem(int i) {
-        return IntroSlider.getInstance(i);
+        return IntroSliderFragment.getInstance(i);
     }
 
     @Override public int getCount() {

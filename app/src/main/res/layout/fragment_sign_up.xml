@@ -1,19 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="pk.EA.Scenario.app.Etiquette.SignUpFragment"
+    android:layout_height="match_parent" tools:context="pk.EA.Scenario.app.Etiquette.fragments.SignUpFragment"
     android:background="@drawable/bg"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
-    <!--
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-
-        android:src="@drawable/sign_up_text"
-        android:layout_marginTop="20dp"/>
-        -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,17 +59,6 @@
         android:layout_marginTop="22dp"
         android:background="@drawable/sign_up_button" />
 
-    <!--
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/goto_login"
-
-        android:layout_marginTop="40dp"
-        android:src="@drawable/already_have_account"
-        android:clickable="true" />
-        -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,15 +68,6 @@
         android:text="@string/already_have_account"
         android:clickable="true" />
 
-    <!--
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView4"
-        android:src="@drawable/terms_and_conditions"
-
-        android:layout_marginTop="76dp" />
-        -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
