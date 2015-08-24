@@ -4,6 +4,7 @@ package pk.edu.pucit.mian.loginapp;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -13,7 +14,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -36,18 +37,15 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SignUp extends android.support.v4.app.Fragment implements
+public class SignUpFragment extends android.support.v4.app.Fragment implements
                 View.OnClickListener{
 
     ImageButton signupButton;
-    ImageView gotoLogin;
+    TextView gotoLogin;
 
-    public SignUp() {
+    public SignUpFragment() {
         // Required empty public constructor
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,8 +58,13 @@ public class SignUp extends android.support.v4.app.Fragment implements
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
 
+        TextView tx = (TextView)getActivity().findViewById(R.id.sign_up_header);
+
+        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Lato-Bold.ttf");
+        tx.setTypeface(custom_font);
+
         signupButton = (ImageButton)getActivity().findViewById(R.id.signup_button);
-        gotoLogin = (ImageView)getActivity().findViewById(R.id.goto_login);
+        gotoLogin = (TextView)getActivity().findViewById(R.id.goto_login);
 
         signupButton.setOnClickListener(this);
         gotoLogin.setOnClickListener(this);
@@ -79,7 +82,7 @@ public class SignUp extends android.support.v4.app.Fragment implements
 
             if(email.length() == 0 || passwrod.length() == 0)
             {
-                Toast.makeText(getActivity(), "Please fill all details", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.fill_details), Toast.LENGTH_SHORT).show();
             }
             else {
                 View v = getActivity().getCurrentFocus();
@@ -110,7 +113,7 @@ public class SignUp extends android.support.v4.app.Fragment implements
         ProgressDialog progressDialog;
 
         protected void onPreExecute() {
-            progressDialog = ProgressDialog.show(getActivity(), "Loading", "Signing Up", true);
+            progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading_text), getString(R.string.signing_up_text), true);
         }
 
         protected String doInBackground(String... params) {
@@ -171,7 +174,7 @@ public class SignUp extends android.support.v4.app.Fragment implements
 
             if(result.equals(""))
             {
-                Toast.makeText(getActivity(), "Check Internet", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.check_internet), Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -184,7 +187,7 @@ public class SignUp extends android.support.v4.app.Fragment implements
 
             if(message.equals("Already Exist"))
             {
-                Toast.makeText(getActivity(), "Account Already Exist", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.account_exist), Toast.LENGTH_LONG).show();
             }
             else if(message.equals("Signed up successfully"))
             {

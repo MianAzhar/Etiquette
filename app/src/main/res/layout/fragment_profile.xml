@@ -31,6 +31,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/leftmenu" />
 
+            <!--
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,6 +39,16 @@
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/profiletxt" />
+                -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageHeading"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/profile_text"
+                android:textSize="20sp"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -61,7 +72,7 @@
             android:layout_height="wrap_content"
             android:text="Sarah Josen"
             android:paddingTop="10dp"
-            android:textSize="25dp"/>
+            android:textSize="25sp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -103,7 +114,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username"
+                android:text="@string/username_text"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"/>
 
@@ -129,7 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
+                android:text="@string/password"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"/>
 
@@ -155,7 +166,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Preffered Location"
+                android:text="@string/preferred_location_text"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"/>
 
@@ -199,7 +210,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="First Name"
+                android:text="@string/first_name_text"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"/>
 
@@ -225,7 +236,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Last Name"
+                android:text="@string/last_name_text"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"/>
 
@@ -251,7 +262,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
+                android:text="@string/email_text"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"/>
 
@@ -277,7 +288,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mobile Number"
+                android:text="@string/mobile_number_text"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"/>
 

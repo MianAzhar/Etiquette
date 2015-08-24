@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="pk.edu.pucit.mian.loginapp.Popular">
+    android:layout_height="match_parent" tools:context="pk.edu.pucit.mian.loginapp.PopularFragment">
 
 
     <RelativeLayout
@@ -24,6 +24,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/leftmenu" />
 
+        <!--
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,6 +32,16 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/popularheader" />
+            -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView32"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/popular_text"
+            android:textSize="20sp"/>
 
         <ImageView
             android:layout_width="wrap_content"

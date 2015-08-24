@@ -42,7 +42,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment implements
     {
         if(view.getId() == R.id.imageEdit)
         {
-            Popular newFrag = new Popular();
+            PopularFragment newFrag = new PopularFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);

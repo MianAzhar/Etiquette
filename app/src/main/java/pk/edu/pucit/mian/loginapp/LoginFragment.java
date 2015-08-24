@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -17,7 +18,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -71,9 +72,11 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
     private ImageButton wechatButton;
     private ImageButton weiboButton;
     private ImageButton loginButton;
-    private ImageView gotoSignup;
+    private TextView gotoSignup;
     private CallbackManager callbackManager;
     private Activity activity;
+
+    ProgressDialog progressDialog;
 
     PlatformActionListener platformActionListener;
 
@@ -123,12 +126,17 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
     {
         super.onActivityCreated(bundle);
 
+        TextView tx = (TextView)getActivity().findViewById(R.id.sign_in_header);
+
+        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(),  "fonts/Lato-Bold.ttf");
+        tx.setTypeface(custom_font);
+
         googleButton = (ImageButton)activity.findViewById(R.id.google_login);
         wechatButton = (ImageButton)activity.findViewById(R.id.wechat_login);
         weiboButton = (ImageButton)activity.findViewById(R.id.weibo_login);
         loginButton = (ImageButton)activity.findViewById(R.id.login_button);
 
-        gotoSignup = (ImageView)activity.findViewById(R.id.goto_signup);
+        gotoSignup = (TextView)activity.findViewById(R.id.goto_signup);
 
         googleButton.setOnClickListener(this);
         weiboButton.setOnClickListener(this);
@@ -180,12 +188,22 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
 
                     @Override
                     public void onCancel() {
-
+                        if(progressDialog != null)
+                        {
+                            progressDialog.dismiss();
+                            progressDialog = null;
+                        }
+                        Toast.makeText(activity, getString(R.string.unable_login), Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onError(FacebookException exception) {
-
+                        if(progressDialog != null)
+                        {
+                            progressDialog.dismiss();
+                            progressDialog = null;
+                        }
+                        Toast.makeText(activity, getString(R.string.unable_login), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -193,6 +211,7 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             @Override
             public void onClick(View view) {
                 LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile, email, user_birthday"));
+                progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading_text), getString(R.string.logging_in_text), true);
             }
         });
 
@@ -224,12 +243,22 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
 
             @Override
             public void onError() {
-                Toast.makeText(activity, "onError", Toast.LENGTH_LONG).show();
+                if(progressDialog != null)
+                {
+                    progressDialog.dismiss();
+                    progressDialog = null;
+                }
+                Toast.makeText(activity, getString(R.string.unable_login), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onCancel() {
-                Toast.makeText(activity, "onCancel", Toast.LENGTH_LONG).show();
+                if(progressDialog != null)
+                {
+                    progressDialog.dismiss();
+                    progressDialog = null;
+                }
+                Toast.makeText(activity, getString(R.string.unable_login), Toast.LENGTH_LONG).show();
             }
         };
 
@@ -254,7 +283,12 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
         {
             if(resultCode != activity.RESULT_OK)
             {
-                Toast.makeText(getActivity(), "Weibo Error", Toast.LENGTH_SHORT).show();
+                if(progressDialog != null)
+                {
+                    progressDialog.dismiss();
+                    progressDialog = null;
+                }
+                Toast.makeText(getActivity(), getString(R.string.unable_login), Toast.LENGTH_SHORT).show();
             }
             else
             {
@@ -307,10 +341,11 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
         else if(v.getId() == R.id.weibo_login){
             WeiboLoginManager wm = new WeiboLoginManager(activity);
             wm.login(platformActionListener);
+            progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading_text), getString(R.string.logging_in_text), true);
         }
         else if(v.getId() == R.id.goto_signup){
 
-            SignUp newFrag = new SignUp();
+            SignUpFragment newFrag = new SignUpFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
 
@@ -326,7 +361,7 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
 
             if(email.length() == 0 || passwrod.length() == 0)
             {
-                Toast.makeText(getActivity(), "Please fill all details", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.fill_details), Toast.LENGTH_SHORT).show();
             }
             else {
                 View view = getActivity().getCurrentFocus();
@@ -344,6 +379,7 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
         // attempt to resolve any errors that occur.
         mShouldResolve = true;
         mGoogleApiClient.connect();
+        progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading_text), getString(R.string.logging_in_text), true);
 
         // Show a message to the user that we are signing in.
         //info.setText("Google signed in");
@@ -369,20 +405,32 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             } else {
                 // Could not resolve the connection result, show the user an
                 // error dialog.
+                if(progressDialog != null)
+                {
+                    progressDialog.dismiss();
+                    progressDialog = null;
+                }
+                Toast.makeText(getActivity(), getString(R.string.unable_login), Toast.LENGTH_SHORT).show();
             }
         } else {
             // Show the signed-out UI
             //showSignedOutUI();
+            if(progressDialog != null)
+            {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+            Toast.makeText(getActivity(), getString(R.string.unable_login), Toast.LENGTH_SHORT).show();
         }
     }
 
     class SigninAPI extends AsyncTask<String, Void, String> {
 
         private Exception exception;
-        ProgressDialog progressDialog;
 
         protected void onPreExecute() {
-            progressDialog = ProgressDialog.show(getActivity(), "Loading", "Logging In", true);
+            if(progressDialog == null)
+                progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading_text), getString(R.string.logging_in_text), true);
         }
 
         protected String doInBackground(String... params) {
@@ -450,7 +498,7 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
 
             if(result.equals(""))
             {
-                Toast.makeText(getActivity(), "Check Internet", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.check_internet), Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -468,11 +516,11 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
 
             if(message.equals("Information is incorrect"))
             {
-                Toast.makeText(getActivity(), "Incorrect email/password", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.incorrect_email_password), Toast.LENGTH_LONG).show();
             }
             else if(message.equals("Signed in successfully"))
             {
-                Popular newFrag = new Popular();
+                PopularFragment newFrag = new PopularFragment();
 
                 android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
                 getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);

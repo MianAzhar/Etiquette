@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity implements
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        Introduction newFrag = new Introduction();
+        IntroductionFragment newFrag = new IntroductionFragment();
 
         android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
 
@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity implements
 
         if ((loginFragment != null && loginFragment.isVisible())
                 || (signupFragment != null && signupFragment.isVisible())) {
-            Introduction newFrag = new Introduction();
+            IntroductionFragment newFrag = new IntroductionFragment();
 
             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();

@@ -1,17 +1,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="pk.edu.pucit.mian.loginapp.Introduction"
+    android:layout_height="match_parent" tools:context="pk.edu.pucit.mian.loginapp.IntroductionFragment"
     android:background="@drawable/splash_bg">
 
 
-    <ImageView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/welcometext"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/welcome"
+            android:text="@string/welcome"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lookArround"
+            android:text="@string/look_around"/>
+
+        </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

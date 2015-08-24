@@ -16,10 +16,10 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Popular extends android.support.v4.app.Fragment implements View.OnClickListener {
+public class PopularFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
 
-    public Popular() {
+    public PopularFragment() {
         // Required empty public constructor
     }
 
@@ -60,7 +60,7 @@ public class Popular extends android.support.v4.app.Fragment implements View.OnC
     public void onClick(View view){
         if(view.getId() == R.id.latestButton_popular)
         {
-            Latest newFrag = new Latest();
+            LatestFragment newFrag = new LatestFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -68,7 +68,7 @@ public class Popular extends android.support.v4.app.Fragment implements View.OnC
         }
         else if(view.getId() == R.id.categoryButton_popular)
         {
-            Categories newFrag = new Categories();
+            CategoriesFragment newFrag = new CategoriesFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);

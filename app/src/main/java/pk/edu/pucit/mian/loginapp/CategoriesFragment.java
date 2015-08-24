@@ -13,10 +13,10 @@ import android.widget.ImageButton;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Categories extends android.support.v4.app.Fragment implements View.OnClickListener {
+public class CategoriesFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
 
-    public Categories() {
+    public CategoriesFragment() {
         // Required empty public constructor
     }
 
@@ -43,7 +43,7 @@ public class Categories extends android.support.v4.app.Fragment implements View.
     public void onClick(View view){
         if(view.getId() == R.id.popularButton_categories)
         {
-            Popular newFrag = new Popular();
+            PopularFragment newFrag = new PopularFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -51,7 +51,7 @@ public class Categories extends android.support.v4.app.Fragment implements View.
         }
         else if(view.getId() == R.id.latestButton_categories)
         {
-            Latest newFrag = new Latest();
+            LatestFragment newFrag = new LatestFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);

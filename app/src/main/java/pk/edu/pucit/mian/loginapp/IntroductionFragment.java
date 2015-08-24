@@ -15,7 +15,7 @@ import android.widget.ImageView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Introduction extends android.support.v4.app.Fragment implements View.OnClickListener {
+public class IntroductionFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
 
     private ImageButton loginButton;
@@ -25,7 +25,7 @@ public class Introduction extends android.support.v4.app.Fragment implements Vie
     private ImageView dot2;
     private ImageView dot3;
 
-    public Introduction() {
+    public IntroductionFragment() {
         // Required empty public constructor
     }
 
@@ -114,7 +114,7 @@ public class Introduction extends android.support.v4.app.Fragment implements Vie
             trans.commit();
         }
         else if(view.getId() == R.id.firstSignup){
-            SignUp newFrag = new SignUp();
+            SignUpFragment newFrag = new SignUpFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
 
