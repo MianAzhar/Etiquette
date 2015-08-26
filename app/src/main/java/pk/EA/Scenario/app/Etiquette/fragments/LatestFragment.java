@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import pk.EA.Scenario.app.Etiquette.ListAdapter;
+import pk.EA.Scenario.app.Etiquette.adapters.ListAdapter;
 import pk.EA.Scenario.app.Etiquette.R;
 
 

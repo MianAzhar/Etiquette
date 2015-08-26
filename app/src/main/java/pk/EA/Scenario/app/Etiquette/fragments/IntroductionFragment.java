@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import pk.EA.Scenario.app.Etiquette.IntroPagerAdapter;
+import pk.EA.Scenario.app.Etiquette.adapters.IntroPagerAdapter;
 import pk.EA.Scenario.app.Etiquette.R;
 
 

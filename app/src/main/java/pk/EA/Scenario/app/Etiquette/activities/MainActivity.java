@@ -1,4 +1,4 @@
-package pk.EA.Scenario.app.Etiquette;
+package pk.EA.Scenario.app.Etiquette.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
 
+import pk.EA.Scenario.app.Etiquette.R;
 import pk.EA.Scenario.app.Etiquette.fragments.IntroductionFragment;
 import pk.EA.Scenario.app.Etiquette.fragments.LoginFragment;
 

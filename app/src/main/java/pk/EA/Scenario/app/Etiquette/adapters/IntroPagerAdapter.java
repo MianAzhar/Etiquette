@@ -1,4 +1,4 @@
-package pk.EA.Scenario.app.Etiquette;
+package pk.EA.Scenario.app.Etiquette.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
