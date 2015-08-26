@@ -80,7 +80,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OPTION 1"
+                    android:text="@string/option_1"
                     android:layout_gravity="center"
                     android:textColor="#000000"/>
             </FrameLayout>
@@ -114,7 +114,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OPTION 2"
+                    android:text="@string/option_2"
                     android:layout_gravity="center"
                     android:textColor="#000000"/>
             </FrameLayout>
@@ -148,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OPTION 3"
+                    android:text="@string/option_3"
                     android:layout_gravity="center"
                     android:textColor="#000000"/>
             </FrameLayout>
@@ -182,7 +182,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OPTION 4"
+                    android:text="@string/option_4"
                     android:layout_gravity="center"
                     android:textColor="#000000"/>
             </FrameLayout>
