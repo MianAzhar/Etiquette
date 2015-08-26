@@ -1,12 +1,13 @@
 package pk.EA.Scenario.app.Etiquette.fragments;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -57,6 +58,17 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
         ListView list = (ListView) getActivity().findViewById(R.id.popularList);
         ListAdapter viewadapter = new ListAdapter(getActivity(), texts , res);
         list.setAdapter(viewadapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TravelQuestionFragment newFrag = new TravelQuestionFragment();
+
+                android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                trans.replace(R.id.fragment_container, newFrag, "QuestionFragment").commit();
+            }
+        });
     }
 
     @Override

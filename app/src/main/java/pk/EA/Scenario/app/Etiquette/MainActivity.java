@@ -30,6 +30,7 @@ public class MainActivity extends ActionBarActivity implements
         setContentView(R.layout.activity_main);
 
         IntroductionFragment newFrag = new IntroductionFragment();
+        //TravelQuestionFragment newFrag = new TravelQuestionFragment();
 
         android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
 

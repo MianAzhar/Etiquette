@@ -37,5 +37,9 @@
     <string name="signing_up_text">Signing Up</string>
     <string name="account_exist">Account already exist</string>
     <string name="unable_login">Unable to sign in</string>
+    <string name="travel_text">TRAVEL</string>
+    <string name="select_option">SELECT ANY OPTION</string>
+    <string name="choose_correct_option"><u>YOU HAVE CHOOSEN CORRECT OPTION</u></string>
+    <string name="choose_wrong_option"><u>LOOK WHAT IS APPROPRITE SUGGESTION</u></string>
 
 </resources>
