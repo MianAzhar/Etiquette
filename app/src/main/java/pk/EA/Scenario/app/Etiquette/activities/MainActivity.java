@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity implements
 
         android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
 
-        trans.add(R.id.fragment_container, newFrag).commit();
+        trans.add(R.id.fragment_container, newFrag, "IntroFragment").commit();
 
     }
 
@@ -60,6 +60,10 @@ public class MainActivity extends ActionBarActivity implements
         Fragment profileFragment = (Fragment) getSupportFragmentManager().findFragmentByTag("ProfileFragment");
         Fragment loginFragment = (Fragment) getSupportFragmentManager().findFragmentByTag("loginFragment");
         Fragment signupFragment = (Fragment) getSupportFragmentManager().findFragmentByTag("signupFragment");
+        Fragment latestFragment = getSupportFragmentManager().findFragmentByTag("LatestFragment");
+        Fragment categoriesFragment = getSupportFragmentManager().findFragmentByTag("CategoriesFragment");
+        Fragment introFragment = getSupportFragmentManager().findFragmentByTag("IntroFragment");
+
 
         if ((loginFragment != null && loginFragment.isVisible())
                 || (signupFragment != null && signupFragment.isVisible())) {
@@ -68,13 +72,16 @@ public class MainActivity extends ActionBarActivity implements
             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
 
-            trans.replace(R.id.fragment_container, newFrag, "introFragment");
+            trans.replace(R.id.fragment_container, newFrag, "IntroFragment");
 
             trans.commit();
 
         }
         else if ((popularFragment != null && popularFragment.isVisible())
-                || (profileFragment != null && profileFragment.isVisible())) {
+                || (profileFragment != null && profileFragment.isVisible())
+                || (latestFragment != null && latestFragment.isVisible())
+                || (categoriesFragment != null && categoriesFragment.isVisible())
+                || (introFragment != null && introFragment.isVisible())) {
             if (doubleBackToExitPressedOnce) {
                 try {
                     LoginManager.getInstance().logOut();

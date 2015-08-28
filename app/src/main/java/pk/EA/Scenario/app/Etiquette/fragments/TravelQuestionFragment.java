@@ -1,9 +1,8 @@
 package pk.EA.Scenario.app.Etiquette.fragments;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,7 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
             CorrectAnswerFragment newFrag = new CorrectAnswerFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-            getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            trans.addToBackStack(null);
             trans.replace(R.id.fragment_container, newFrag, "AnswerFragment").commit();
         }
         else if(view.getId() == R.id.option2)
@@ -59,7 +58,7 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
             WrongAnswerFragment newFrag = new WrongAnswerFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-            getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            trans.addToBackStack(null);
             trans.replace(R.id.fragment_container, newFrag, "AnswerFragment").commit();
         }
         else if(view.getId() == R.id.option3)
@@ -67,7 +66,7 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
             AverageAnswerFragment newFrag = new AverageAnswerFragment();
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-            getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            trans.addToBackStack(null);
             trans.replace(R.id.fragment_container, newFrag, "AnswerFragment").commit();
         }
 

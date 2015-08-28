@@ -66,6 +66,7 @@ public class LatestFragment extends android.support.v4.app.Fragment implements V
 
                 android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
                 getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                trans.addToBackStack(null);
                 trans.replace(R.id.fragment_container, newFrag, "QuestionFragment").commit();
             }
         });
