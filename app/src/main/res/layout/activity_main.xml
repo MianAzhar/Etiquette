@@ -22,7 +22,9 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/drawer"
         app:itemTextColor="#ffffff"
-        android:background="@drawable/transparent_bg" >
+        app:itemIconTint="#ffffff"
+        android:background="@drawable/transparent_bg"
+        android:foregroundGravity="center_horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -3,11 +3,14 @@ package pk.EA.Scenario.app.Etiquette.fragments;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import pk.EA.Scenario.app.Etiquette.R;
 
@@ -34,6 +37,9 @@ public class CategoriesFragment extends android.support.v4.app.Fragment implemen
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
 
+        ImageView menu = (ImageView)getActivity().findViewById(R.id.drawMenu);
+        menu.setOnClickListener(this);
+
         ImageButton latest = (ImageButton) getActivity().findViewById(R.id.latestButton_categories);
         ImageButton popular = (ImageButton) getActivity().findViewById(R.id.popularButton_categories);
 
@@ -58,6 +64,13 @@ public class CategoriesFragment extends android.support.v4.app.Fragment implemen
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             trans.replace(R.id.fragment_container, newFrag, "LatestFragment").commit();
+        }
+        else if(view.getId() == R.id.drawMenu)
+        {
+            DrawerLayout d = (DrawerLayout)getActivity().findViewById(R.id.drawer);
+
+            NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigation_view);
+            d.openDrawer(navigationView);
         }
     }
 

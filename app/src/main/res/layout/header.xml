@@ -20,7 +20,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView6"
+            android:id="@+id/cancelMenu"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imageView5"
             android:layout_toEndOf="@+id/imageView5"

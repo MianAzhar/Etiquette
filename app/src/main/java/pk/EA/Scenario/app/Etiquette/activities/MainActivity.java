@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
@@ -34,6 +35,9 @@ public class MainActivity extends ActionBarActivity implements
 
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
+        ImageView close = (ImageView)findViewById(R.id.cancelMenu);
+        close.setOnClickListener(this);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -112,6 +116,8 @@ public class MainActivity extends ActionBarActivity implements
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == R.id.cancelMenu)
+            drawerLayout.closeDrawers();
 
     }
 

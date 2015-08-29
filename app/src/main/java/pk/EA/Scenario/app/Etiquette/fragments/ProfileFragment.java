@@ -3,7 +3,9 @@ package pk.EA.Scenario.app.Etiquette.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,9 @@ public class ProfileFragment extends android.support.v4.app.Fragment implements
     public void onActivityCreated(Bundle bundle){
         super.onActivityCreated(bundle);
 
+        ImageView menu = (ImageView)getActivity().findViewById(R.id.drawMenu);
+        menu.setOnClickListener(this);
+
         ImageView btn = (ImageView)getActivity().findViewById(R.id.imageEdit);
         btn.setOnClickListener(this);
     }
@@ -51,6 +56,13 @@ public class ProfileFragment extends android.support.v4.app.Fragment implements
             trans.replace(R.id.fragment_container, newFrag, "PopularFragment");
 
             trans.commit();
+        }
+        else if(view.getId() == R.id.drawMenu)
+        {
+            DrawerLayout d = (DrawerLayout)getActivity().findViewById(R.id.drawer);
+
+            NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigation_view);
+            d.openDrawer(navigationView);
         }
     }
 
