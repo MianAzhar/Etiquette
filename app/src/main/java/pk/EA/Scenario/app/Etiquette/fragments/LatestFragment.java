@@ -1,8 +1,8 @@
 package pk.EA.Scenario.app.Etiquette.fragments;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -16,7 +16,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import pk.EA.Scenario.app.Etiquette.adapters.ListAdapter;
 import pk.EA.Scenario.app.Etiquette.R;
 
 
@@ -62,8 +61,8 @@ public class LatestFragment extends android.support.v4.app.Fragment implements V
         int[] res = {R.drawable.toiletpic, R.drawable.toiletpic, R.drawable.toiletpic, R.drawable.toiletpic, R.drawable.toiletpic};
 
         ListView list = (ListView) getActivity().findViewById(R.id.latestList);
-        ListAdapter viewadapter = new ListAdapter(getActivity(), texts , res);
-        list.setAdapter(viewadapter);
+        //ListAdapter viewadapter = new ListAdapter(getActivity(), texts , res);
+        //list.setAdapter(viewadapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

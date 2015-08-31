@@ -529,11 +529,14 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             }
             else if(message.equals("Signed in successfully"))
             {
+                //new WebAPI().execute("http://etiquetteapp.azurewebsites.net/getAllEtiquettes");
+
                 PopularFragment newFrag = new PopularFragment();
 
                 android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
                 getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 trans.replace(R.id.fragment_container, newFrag, "PopularFragment").commit();
+
             }
             else if(message.equals("Signed in successfully, after Sign up"))
             {
@@ -546,4 +549,6 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             }
         }
     }
+
+
 }
