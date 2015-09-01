@@ -71,6 +71,60 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
         ImageView menu = (ImageView)getActivity().findViewById(R.id.drawMenu);
         menu.setOnClickListener(this);
 
+        ImageView star1 = (ImageView)getActivity().findViewById(R.id.star1);
+        ImageView star2 = (ImageView)getActivity().findViewById(R.id.star2);
+        ImageView star3 = (ImageView)getActivity().findViewById(R.id.star3);
+        ImageView star4 = (ImageView)getActivity().findViewById(R.id.star4);
+        ImageView star5 = (ImageView)getActivity().findViewById(R.id.star5);
+        
+        int rate = Integer.parseInt(etiquette.getMeter());
+
+        switch (rate)
+        {
+            case 1:
+                star1.setImageResource(R.drawable.starfill);
+                star2.setImageResource(R.drawable.star);
+                star3.setImageResource(R.drawable.star);
+                star4.setImageResource(R.drawable.star);
+                star5.setImageResource(R.drawable.star);
+                break;
+            case 2:
+                star1.setImageResource(R.drawable.starfill);
+                star2.setImageResource(R.drawable.starfill);
+                star3.setImageResource(R.drawable.star);
+                star4.setImageResource(R.drawable.star);
+                star5.setImageResource(R.drawable.star);
+                break;
+            case 3:
+                star1.setImageResource(R.drawable.starfill);
+                star2.setImageResource(R.drawable.starfill);
+                star3.setImageResource(R.drawable.starfill);
+                star4.setImageResource(R.drawable.star);
+                star5.setImageResource(R.drawable.star);
+                break;
+            case 4:
+                star1.setImageResource(R.drawable.starfill);
+                star2.setImageResource(R.drawable.starfill);
+                star3.setImageResource(R.drawable.starfill);
+                star4.setImageResource(R.drawable.starfill);
+                star5.setImageResource(R.drawable.star);
+                break;
+            case 5:
+                star1.setImageResource(R.drawable.starfill);
+                star2.setImageResource(R.drawable.starfill);
+                star3.setImageResource(R.drawable.starfill);
+                star4.setImageResource(R.drawable.starfill);
+                star5.setImageResource(R.drawable.starfill);
+                break;
+            default:
+                star1.setImageResource(R.drawable.star);
+                star2.setImageResource(R.drawable.star);
+                star3.setImageResource(R.drawable.star);
+                star4.setImageResource(R.drawable.star);
+                star5.setImageResource(R.drawable.star);
+                break;
+        }
+        
         TextView q1 = (TextView)getActivity().findViewById(R.id.option1);
         TextView q2 = (TextView)getActivity().findViewById(R.id.option2);
         TextView q3 = (TextView)getActivity().findViewById(R.id.option3);

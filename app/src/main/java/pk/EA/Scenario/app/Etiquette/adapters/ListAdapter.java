@@ -37,15 +37,70 @@ public class ListAdapter extends ArrayAdapter<String>
         LayoutInflater inflator = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View row = inflator.inflate(R.layout.list_item, parent ,false);
 
+        ImageView out = (ImageView)row.findViewById(R.id.backgroundImage);
+        Picasso.with(context).load(resources.get(position).getUrl()).into(out);
+
         TextView textView = (TextView) row.findViewById(R.id.detailText);
         textView.setText(textList.get(position));
 
-        ImageView out = (ImageView)row.findViewById(R.id.backgroundImage);
-        //out.setBackgroundResource(resources[position]);
+        ImageView f1 = (ImageView)row.findViewById(R.id.fire1);
+        ImageView f2 = (ImageView)row.findViewById(R.id.fire2);
+        ImageView f3 = (ImageView)row.findViewById(R.id.fire3);
+        ImageView f4 = (ImageView)row.findViewById(R.id.fire4);
+        ImageView f5 = (ImageView)row.findViewById(R.id.fire5);
 
-        Picasso.with(context).load(resources.get(position).getUrl()).into(out);
+        int rate = 0;
 
+        try{
+           rate = Integer.parseInt(resources.get(position).getMeter());
+        }
+        catch (Exception ex){}
+
+        switch (rate)
+        {
+            case 1:
+                f1.setImageResource(R.drawable.firefill);
+                f2.setImageResource(R.drawable.fireempty);
+                f3.setImageResource(R.drawable.fireempty);
+                f4.setImageResource(R.drawable.fireempty);
+                f5.setImageResource(R.drawable.fireempty);
+                break;
+            case 2:
+                f1.setImageResource(R.drawable.firefill);
+                f2.setImageResource(R.drawable.firefill);
+                f3.setImageResource(R.drawable.fireempty);
+                f4.setImageResource(R.drawable.fireempty);
+                f5.setImageResource(R.drawable.fireempty);
+                break;
+            case 3:
+                f1.setImageResource(R.drawable.firefill);
+                f2.setImageResource(R.drawable.firefill);
+                f3.setImageResource(R.drawable.firefill);
+                f4.setImageResource(R.drawable.fireempty);
+                f5.setImageResource(R.drawable.fireempty);
+                break;
+            case 4:
+                f1.setImageResource(R.drawable.firefill);
+                f2.setImageResource(R.drawable.firefill);
+                f3.setImageResource(R.drawable.firefill);
+                f4.setImageResource(R.drawable.firefill);
+                f5.setImageResource(R.drawable.fireempty);
+                break;
+            case 5:
+                f1.setImageResource(R.drawable.firefill);
+                f2.setImageResource(R.drawable.firefill);
+                f3.setImageResource(R.drawable.firefill);
+                f4.setImageResource(R.drawable.firefill);
+                f5.setImageResource(R.drawable.firefill);
+                break;
+            default:
+                f1.setImageResource(R.drawable.fireempty);
+                f2.setImageResource(R.drawable.fireempty);
+                f3.setImageResource(R.drawable.fireempty);
+                f4.setImageResource(R.drawable.fireempty);
+                f5.setImageResource(R.drawable.fireempty);
+                break;
+        }
         return row;
-
     }
 }

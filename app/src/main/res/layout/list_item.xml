@@ -52,32 +52,32 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView34"
+            android:id="@+id/fire1"
             android:src="@drawable/firefill"
             />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView35"
+            android:id="@+id/fire2"
             android:src="@drawable/firefill" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView36"
+            android:id="@+id/fire3"
             android:src="@drawable/fireempty" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView37"
+            android:id="@+id/fire4"
             android:src="@drawable/fireempty" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView38"
+            android:id="@+id/fire5"
             android:src="@drawable/fireempty"
             />
     </LinearLayout>
