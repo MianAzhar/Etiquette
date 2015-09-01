@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-
-    >
+    android:layout_width="match_parent" android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:padding="0dip"
         android:id="@+id/backgroundImage"/>
 
     <LinearLayout
@@ -15,13 +15,14 @@
         android:layout_gravity="bottom"
         android:orientation="vertical">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="I spilled some toppings in the eleveter"
         android:id="@+id/detailText"
         android:textColor="#ffff"
         android:paddingLeft="15dp"
         />
+        <!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +40,7 @@
         android:paddingLeft="15dp"
         android:paddingBottom="10dp"
         />
-
+-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"

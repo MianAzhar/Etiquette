@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -531,6 +532,13 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             {
                 //new WebAPI().execute("http://etiquetteapp.azurewebsites.net/getAllEtiquettes");
 
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = pref.edit();
+
+                editor.putBoolean("user", true);
+                editor.commit();
+
                 PopularFragment newFrag = new PopularFragment();
 
                 android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
@@ -540,6 +548,13 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             }
             else if(message.equals("Signed in successfully, after Sign up"))
             {
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = pref.edit();
+
+                editor.putBoolean("user", true);
+                editor.commit();
+
                 ProfileFragment newFrag = new ProfileFragment();
 
                 android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();

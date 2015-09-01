@@ -71,65 +71,20 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
 
         latest.setOnClickListener(this);
         categories.setOnClickListener(this);
-/*
-        ArrayList<String> texts = new ArrayList<String>();
 
-        objects = new ArrayList<Etiquette>();
-        Bundle data = getArguments();
-        String str;
-
-        try {
-            str = data.getString("data");
-
-            JSONObject obj = new JSONObject(str);
-
-            JSONArray jsonArray = obj.getJSONArray("data");
-
-            for(int i = 0; i < jsonArray.length(); i++)
-            {
-                JSONObject temp = jsonArray.getJSONObject(i);
-                Etiquette et = new Etiquette();
-                texts.add(temp.getString("minor_description"));
-
-                et.setDescription(temp.getString("description"));
-                et.setId(temp.getInt("etiquetteId"));
-                et.setMeter(temp.getString("meter"));
-                et.setMinor_description(temp.getString("minor_description"));
-                et.setOpt1(temp.getString("option1"));
-                et.setOpt2(temp.getString("option2"));
-                et.setOpt3(temp.getString("option3"));
-                et.setOpt4(temp.getString("option4"));
-                et.setUrl(temp.getString("image_video"));
-                et.setTitle(temp.getString("title"));
-                et.setType(temp.getString("type"));
-
-                objects.add(et);
-            }
-
-        }
-        catch (Exception ex)
-        {
-
-        }
-
-        /*
-        texts.add("This is sample text");
-        texts.add("This is sample text");
-        texts.add("This is sample text");
-        texts.add("This is sample text");
-        texts.add("This is sample text");
-
-        int[] res = {R.drawable.picture, R.drawable.picture, R.drawable.picture, R.drawable.picture, R.drawable.picture};
-
-        ListView list = (ListView) getActivity().findViewById(R.id.popularList);
-        ListAdapter viewadapter = new ListAdapter(getActivity(), texts , objects);
-        list.setAdapter(viewadapter);
-*/
         ListView list = (ListView) getActivity().findViewById(R.id.popularList);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TravelQuestionFragment newFrag = new TravelQuestionFragment();
+
+                Etiquette obj = objects.get(position);
+
+                Bundle question = new Bundle();
+
+                question.putSerializable("data", obj);
+
+                newFrag.setArguments(question);
 
                 android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
                 getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -159,14 +114,16 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
         }
         else if(view.getId() == R.id.drawMenu)
         {
+
             DrawerLayout d = (DrawerLayout)getActivity().findViewById(R.id.drawer);
 
             NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigation_view);
             d.openDrawer(navigationView);
+
         }
     }
 
-    public class WebAPI extends AsyncTask<String, Void, String> {
+    class WebAPI extends AsyncTask<String, Void, String> {
 
         private Exception exception;
 
@@ -174,12 +131,10 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
 
         protected void onPreExecute() {
             if(progressDialog == null)
-                progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading_text), getString(R.string.logging_in_text), true);
+                progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading_text), getString(R.string.fetching_data_text), true);
         }
 
         protected String doInBackground(String... params) {
-
-
 
             String url = params[0];
 
@@ -188,7 +143,7 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
 
             HttpClient httpclient = new DefaultHttpClient();
 
-            HttpPost request = new HttpPost("http://etiquetteapp.azurewebsites.net/getAllEtiquettes");
+            HttpPost request = new HttpPost(url);
 
             List<NameValuePair> parameters = new ArrayList<NameValuePair>();
             parameters.add(new BasicNameValuePair("language", "english"));
@@ -271,10 +226,10 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
                     et.setId(temp.getInt("etiquetteId"));
                     et.setMeter(temp.getString("meter"));
                     et.setMinor_description(temp.getString("minor_description"));
-                    et.setOpt1(temp.getString("option1"));
-                    et.setOpt2(temp.getString("option2"));
-                    et.setOpt3(temp.getString("option3"));
-                    et.setOpt4(temp.getString("option4"));
+                    et.setOpt1_text(temp.getString("option_text_1"));
+                    et.setOpt2_text(temp.getString("option_text_2"));
+                    et.setOpt3_text(temp.getString("option_text_3"));
+                    et.setOpt4_text(temp.getString("option_text_4"));
                     et.setUrl(temp.getString("image_video"));
                     et.setTitle(temp.getString("title"));
                     et.setType(temp.getString("type"));

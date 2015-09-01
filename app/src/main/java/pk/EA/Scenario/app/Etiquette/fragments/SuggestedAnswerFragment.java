@@ -12,13 +12,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import pk.EA.Scenario.app.Etiquette.R;
+import pk.EA.Scenario.app.Etiquette.utils.Etiquette;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SuggestedAnswerFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
+    Etiquette etiquette;
 
     public SuggestedAnswerFragment() {
         // Required empty public constructor
@@ -36,22 +40,33 @@ public class SuggestedAnswerFragment extends android.support.v4.app.Fragment imp
     public void onActivityCreated(Bundle bundle){
         super.onActivityCreated(bundle);
 
+        Bundle data = getArguments();
+
+        etiquette = (Etiquette)data.getSerializable("data");
+
+        ImageView answerImage = (ImageView)getActivity().findViewById(R.id.suggestedAnswer_image);
+
+        Picasso.with(getActivity()).load(etiquette.getUrl()).into(answerImage);
+
         ImageView menu = (ImageView)getActivity().findViewById(R.id.drawMenu);
         menu.setOnClickListener(this);
 
         TextView answer = (TextView)getActivity().findViewById(R.id.answer_text);
 
         answer.setMovementMethod(new ScrollingMovementMethod());
+        answer.setText(etiquette.getDescription());
     }
 
     @Override
     public void onClick(View view){
         if(view.getId() == R.id.drawMenu)
         {
+
             DrawerLayout d = (DrawerLayout)getActivity().findViewById(R.id.drawer);
 
             NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigation_view);
             d.openDrawer(navigationView);
+
         }
     }
 

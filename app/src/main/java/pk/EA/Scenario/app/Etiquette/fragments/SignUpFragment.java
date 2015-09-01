@@ -4,6 +4,7 @@ package pk.EA.Scenario.app.Etiquette.fragments;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -193,6 +194,13 @@ public class SignUpFragment extends android.support.v4.app.Fragment implements
             }
             else if(message.equals("Signed up successfully"))
             {
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = pref.edit();
+
+                editor.putBoolean("user", true);
+                editor.commit();
+
                 ProfileFragment newFrag = new ProfileFragment();
 
                 android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();

@@ -50,9 +50,11 @@
 
         <ImageView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-
-            android:src="@drawable/image_preview"/>
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:padding="0dip"
+            android:src="@drawable/image_preview"
+            android:id="@+id/suggestedAnswer_image"/>
 
         <LinearLayout
             android:layout_width="fill_parent"

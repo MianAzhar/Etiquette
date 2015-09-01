@@ -48,7 +48,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/popularList"
         android:layout_below="@+id/relativeLayout"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="35dp"/>
 
     <LinearLayout
         android:orientation="horizontal"

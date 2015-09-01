@@ -54,10 +54,12 @@ public class AverageAnswerFragment extends android.support.v4.app.Fragment imple
         }
         else if(view.getId() == R.id.drawMenu)
         {
+
             DrawerLayout d = (DrawerLayout)getActivity().findViewById(R.id.drawer);
 
             NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigation_view);
             d.openDrawer(navigationView);
+
         }
     }
 

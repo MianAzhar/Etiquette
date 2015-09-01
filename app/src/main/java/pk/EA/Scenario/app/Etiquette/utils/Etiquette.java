@@ -1,9 +1,11 @@
 package pk.EA.Scenario.app.Etiquette.utils;
 
+import java.io.Serializable;
+
 /**
  * Created by Mian on 8/31/2015.
  */
-public class Etiquette {
+public class Etiquette implements Serializable {
     public int getId() {
         return id;
     }
@@ -60,36 +62,36 @@ public class Etiquette {
         this.meter = meter;
     }
 
-    public String getOpt1() {
-        return opt1;
+    public String getOpt1_text() {
+        return opt1_text;
     }
 
-    public void setOpt1(String opt1) {
-        this.opt1 = opt1;
+    public void setOpt1_text(String opt1_text) {
+        this.opt1_text = opt1_text;
     }
 
-    public String getOpt2() {
-        return opt2;
+    public String getOpt2_text() {
+        return opt2_text;
     }
 
-    public void setOpt2(String opt2) {
-        this.opt2 = opt2;
+    public void setOpt2_text(String opt2_text) {
+        this.opt2_text = opt2_text;
     }
 
-    public String getOpt3() {
-        return opt3;
+    public String getOpt3_text() {
+        return opt3_text;
     }
 
-    public void setOpt3(String opt3) {
-        this.opt3 = opt3;
+    public void setOpt3_text(String opt3_text) {
+        this.opt3_text = opt3_text;
     }
 
-    public String getOpt4() {
-        return opt4;
+    public String getOpt4_text() {
+        return opt4_text;
     }
 
-    public void setOpt4(String opt4) {
-        this.opt4 = opt4;
+    public void setOpt4_text(String opt4_text) {
+        this.opt4_text = opt4_text;
     }
 
     private int id;
@@ -99,9 +101,47 @@ public class Etiquette {
     private String minor_description;
     private String url;
     private String meter;
-    private String opt1;
-    private String opt2;
-    private String opt3;
-    private String opt4;
+    private String opt1_text;
+    private String opt2_text;
+    private String opt3_text;
+    private String opt4_text;
+
+    public int getOpt1_count() {
+        return opt1_count;
+    }
+
+    public void setOpt1_count(int opt1_count) {
+        this.opt1_count = opt1_count;
+    }
+
+    private int opt1_count;
+    private int opt2_count;
+
+    public int getOpt4_count() {
+        return opt4_count;
+    }
+
+    public void setOpt4_count(int opt4_count) {
+        this.opt4_count = opt4_count;
+    }
+
+    public int getOpt3_count() {
+        return opt3_count;
+    }
+
+    public void setOpt3_count(int opt3_count) {
+        this.opt3_count = opt3_count;
+    }
+
+    public int getOpt2_count() {
+        return opt2_count;
+    }
+
+    public void setOpt2_count(int opt2_count) {
+        this.opt2_count = opt2_count;
+    }
+
+    private int opt3_count;
+    private int opt4_count;
 
 }

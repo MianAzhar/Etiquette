@@ -1,8 +1,8 @@
 package pk.EA.Scenario.app.Etiquette.fragments;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -67,10 +67,12 @@ public class CategoriesFragment extends android.support.v4.app.Fragment implemen
         }
         else if(view.getId() == R.id.drawMenu)
         {
+
             DrawerLayout d = (DrawerLayout)getActivity().findViewById(R.id.drawer);
 
             NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigation_view);
             d.openDrawer(navigationView);
+
         }
     }
 

@@ -1,17 +1,19 @@
 package pk.EA.Scenario.app.Etiquette.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
@@ -19,9 +21,10 @@ import com.facebook.login.LoginManager;
 import pk.EA.Scenario.app.Etiquette.R;
 import pk.EA.Scenario.app.Etiquette.fragments.IntroductionFragment;
 import pk.EA.Scenario.app.Etiquette.fragments.LoginFragment;
+import pk.EA.Scenario.app.Etiquette.fragments.PopularFragment;
 
 
-public class MainActivity extends ActionBarActivity implements
+public class MainActivity extends AppCompatActivity implements
         View.OnClickListener {
 
     boolean doubleBackToExitPressedOnce = false;
@@ -33,11 +36,15 @@ public class MainActivity extends ActionBarActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
 
         ImageView close = (ImageView)findViewById(R.id.cancelMenu);
         close.setOnClickListener(this);
+
+        TextView signout = (TextView)findViewById(R.id.sign_out_button);
+        signout.setOnClickListener(this);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -50,7 +57,6 @@ public class MainActivity extends ActionBarActivity implements
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
 
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if (menuItem.isChecked())
@@ -93,13 +99,27 @@ public class MainActivity extends ActionBarActivity implements
             }
         });
 
+        SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
-        IntroductionFragment newFrag = new IntroductionFragment();
-        //TravelQuestionFragment newFrag = new TravelQuestionFragment();
+        boolean user = false;
 
-        android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+        user = pref.getBoolean("user", false);
 
-        trans.add(R.id.fragment_container, newFrag, "IntroFragment").commit();
+        if(user)
+        {
+            PopularFragment newFrag = new PopularFragment();
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            trans.replace(R.id.fragment_container, newFrag, "PopularFragment").commit();
+        }
+        else {
+            IntroductionFragment newFrag = new IntroductionFragment();
+            //TravelQuestionFragment newFrag = new TravelQuestionFragment();
+
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+
+            trans.add(R.id.fragment_container, newFrag, "IntroFragment").commit();
+        }
 
     }
 
@@ -116,12 +136,37 @@ public class MainActivity extends ActionBarActivity implements
 
     @Override
     public void onClick(View v) {
+
         if(v.getId() == R.id.cancelMenu)
             drawerLayout.closeDrawers();
+        else if(v.getId() == R.id.sign_out_button){
+            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = pref.edit();
+
+            editor.clear();
+            editor.commit();
+
+            try {
+                LoginManager.getInstance().logOut();
+            }
+            catch (Exception e){}
+
+            if(drawerLayout.isDrawerOpen(navigationView)) {
+                drawerLayout.closeDrawers();
+            }
+
+            LoginFragment newFrag = new LoginFragment();
+
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            trans.replace(R.id.fragment_container, newFrag, "loginFragment");
+            trans.commit();
+        }
 
     }
 
     public void onBackPressed() {
+
 
         if(drawerLayout.isDrawerOpen(navigationView)) {
             drawerLayout.closeDrawers();
@@ -135,7 +180,6 @@ public class MainActivity extends ActionBarActivity implements
         Fragment latestFragment = getSupportFragmentManager().findFragmentByTag("LatestFragment");
         Fragment categoriesFragment = getSupportFragmentManager().findFragmentByTag("CategoriesFragment");
         Fragment introFragment = getSupportFragmentManager().findFragmentByTag("IntroFragment");
-
 
         if ((loginFragment != null && loginFragment.isVisible())
                 || (signupFragment != null && signupFragment.isVisible())) {
@@ -155,10 +199,6 @@ public class MainActivity extends ActionBarActivity implements
                 || (categoriesFragment != null && categoriesFragment.isVisible())
                 || (introFragment != null && introFragment.isVisible())) {
             if (doubleBackToExitPressedOnce) {
-                try {
-                    LoginManager.getInstance().logOut();
-                }
-                catch (Exception e){}
 
                 super.onBackPressed();
                 return;
@@ -181,7 +221,7 @@ public class MainActivity extends ActionBarActivity implements
 
     }
 
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -203,6 +243,8 @@ public class MainActivity extends ActionBarActivity implements
 
         return super.onOptionsItemSelected(item);
     }
+
+    */
 
 
 }
