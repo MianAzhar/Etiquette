@@ -4,6 +4,7 @@ package pk.EA.Scenario.app.Etiquette.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import pk.EA.Scenario.app.Etiquette.R;
+import pk.EA.Scenario.app.Etiquette.activities.MainActivity;
 import pk.EA.Scenario.app.Etiquette.utils.Etiquette;
 
 /**
@@ -38,9 +40,11 @@ public class WrongAnswerFragment extends android.support.v4.app.Fragment impleme
     public void onActivityCreated(Bundle bundle){
         super.onActivityCreated(bundle);
 
-        Bundle data = getArguments();
+        //Bundle data = getArguments();
 
-        etiquette = (Etiquette)data.getSerializable("data");
+        //etiquette = (Etiquette)data.getSerializable("data");
+
+        etiquette = MainActivity.etiquetteObj;
 
         ProgressBar p1 = (ProgressBar)getActivity().findViewById(R.id.wrongProgress1);
         ProgressBar p2 = (ProgressBar)getActivity().findViewById(R.id.wrongProgress2);
@@ -79,11 +83,12 @@ public class WrongAnswerFragment extends android.support.v4.app.Fragment impleme
             Bundle bundle = new Bundle();
             bundle.putSerializable("data", etiquette);
 
-            newFrag.setArguments(bundle);
+            //newFrag.setArguments(bundle);
 
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-            trans.addToBackStack(null);
-            trans.replace(R.id.fragment_container, newFrag, "SuggestedAnswerFragment").commit();
+            //trans.addToBackStack(null);
+            getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            trans.replace(R.id.fragment_container, newFrag, "SuggestedAnswerFragmentWrong").commit();
         }
         else if(view.getId() == R.id.drawMenu)
         {

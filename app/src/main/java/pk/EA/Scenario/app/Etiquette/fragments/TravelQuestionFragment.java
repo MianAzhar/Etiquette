@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pk.EA.Scenario.app.Etiquette.R;
+import pk.EA.Scenario.app.Etiquette.activities.MainActivity;
 import pk.EA.Scenario.app.Etiquette.utils.Etiquette;
 
 
@@ -63,9 +65,10 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
     {
         super.onActivityCreated(bundle);
 
-        Bundle data = getArguments();
+        //Bundle data = getArguments();
 
-        etiquette = (Etiquette)data.getSerializable("data");
+        //etiquette = (Etiquette)data.getSerializable("data");
+        etiquette = MainActivity.etiquetteObj;
 
         ImageView image = (ImageView)getActivity().findViewById(R.id.question_image);
 
@@ -318,10 +321,17 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
                 JSONObject data = obj.getJSONObject("data");
 
                 try {
+                    /*
                     etiquette.setOpt1_count(data.getInt("option_count_1"));
                     etiquette.setOpt2_count(data.getInt("option_count_2"));
                     etiquette.setOpt3_count(data.getInt("option_count_3"));
                     etiquette.setOpt4_count(data.getInt("option_count_4"));
+                    */
+                    MainActivity.etiquetteObj.setOpt1_count(data.getInt("option_count_1"));
+                    MainActivity.etiquetteObj.setOpt2_count(data.getInt("option_count_2"));
+                    MainActivity.etiquetteObj.setOpt3_count(data.getInt("option_count_3"));
+                    MainActivity.etiquetteObj.setOpt4_count(data.getInt("option_count_4"));
+
                 }
                 catch (Exception ex){}
 
@@ -332,20 +342,22 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
                 {
                     CorrectAnswerFragment newFrag = new CorrectAnswerFragment();
 
-                    newFrag.setArguments(bundle1);
+                    //newFrag.setArguments(bundle1);
 
                     android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-                    trans.addToBackStack(null);
+                    //trans.addToBackStack(null);
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     trans.replace(R.id.fragment_container, newFrag, "AnswerFragment").commit();
                 }
                 else
                 {
                     WrongAnswerFragment newFrag = new WrongAnswerFragment();
 
-                    newFrag.setArguments(bundle1);
+                    //newFrag.setArguments(bundle1);
 
                     android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-                    trans.addToBackStack(null);
+                    //trans.addToBackStack(null);
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     trans.replace(R.id.fragment_container, newFrag, "AnswerFragment").commit();
                 }
 

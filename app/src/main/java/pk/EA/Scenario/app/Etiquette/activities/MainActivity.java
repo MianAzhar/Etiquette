@@ -19,13 +19,19 @@ import android.widget.Toast;
 import com.facebook.login.LoginManager;
 
 import pk.EA.Scenario.app.Etiquette.R;
+import pk.EA.Scenario.app.Etiquette.fragments.CorrectAnswerFragment;
 import pk.EA.Scenario.app.Etiquette.fragments.IntroductionFragment;
 import pk.EA.Scenario.app.Etiquette.fragments.LoginFragment;
 import pk.EA.Scenario.app.Etiquette.fragments.PopularFragment;
+import pk.EA.Scenario.app.Etiquette.fragments.TravelQuestionFragment;
+import pk.EA.Scenario.app.Etiquette.fragments.WrongAnswerFragment;
+import pk.EA.Scenario.app.Etiquette.utils.Etiquette;
 
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener {
+
+    public static Etiquette etiquetteObj = null;
 
     boolean doubleBackToExitPressedOnce = false;
 
@@ -70,29 +76,17 @@ public class MainActivity extends AppCompatActivity implements
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
 
-
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
-                        Toast.makeText(getApplicationContext(), "Home Selected", Toast.LENGTH_SHORT).show();
-                        /*
-                        /*
-                        FragmentManager fm = getSupportFragmentManager();
-                        int count = fm.getBackStackEntryCount();
-                        for(int i = 0; i < count; ++i) {
-                            fm.popBackStackImmediate();
-                        }
-
 
                         Fragment popularFragment = (Fragment) getSupportFragmentManager().findFragmentByTag("PopularFragment");
 
                         if(!(popularFragment != null && popularFragment.isVisible()))
                         {
-                            getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                             PopularFragment newFrag = new PopularFragment();
                             android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+                            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                             trans.replace(R.id.fragment_container, newFrag, "PopularFragment").commit();
                         }
-                        */
 
                         return true;
 
@@ -153,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-
     @Override
     public void onClick(View v) {
 
@@ -202,7 +195,53 @@ public class MainActivity extends AppCompatActivity implements
         Fragment categoriesFragment = getSupportFragmentManager().findFragmentByTag("CategoriesFragment");
         Fragment introFragment = getSupportFragmentManager().findFragmentByTag("IntroFragment");
 
-        if ((loginFragment != null && loginFragment.isVisible())
+        Fragment questionFragment = getSupportFragmentManager().findFragmentByTag("QuestionFragment");
+        Fragment answerFragment = getSupportFragmentManager().findFragmentByTag("AnswerFragment");
+        Fragment suggestedFragmentC = getSupportFragmentManager().findFragmentByTag("SuggestedAnswerFragmentCorrect");
+        Fragment suggestedFragmentW = getSupportFragmentManager().findFragmentByTag("SuggestedAnswerFragmentWrong");
+        Fragment suggestedFragment = getSupportFragmentManager().findFragmentByTag("SuggestedAnswerFragment");
+
+        if(questionFragment != null && questionFragment.isVisible())
+        {
+            PopularFragment newFrag = new PopularFragment();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.fragment_container, newFrag, "PopularFragment");
+            trans.commit();
+        }
+        else if(answerFragment != null && answerFragment.isVisible())
+        {
+            TravelQuestionFragment newFrag = new TravelQuestionFragment();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.fragment_container, newFrag, "QuestionFragment");
+            trans.commit();
+        }
+        else if(suggestedFragmentC != null && suggestedFragmentC.isVisible())
+        {
+            CorrectAnswerFragment newFrag = new CorrectAnswerFragment();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.fragment_container, newFrag, "AnswerFragment");
+            trans.commit();
+        }
+        else if(suggestedFragmentW != null && suggestedFragmentW.isVisible())
+        {
+            WrongAnswerFragment newFrag = new WrongAnswerFragment();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.fragment_container, newFrag, "AnswerFragment");
+            trans.commit();
+        }
+        else if(suggestedFragment != null && suggestedFragment.isVisible())
+        {
+            PopularFragment newFrag = new PopularFragment();
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.fragment_container, newFrag, "PopularFragment");
+            trans.commit();
+        }
+        else if ((loginFragment != null && loginFragment.isVisible())
                 || (signupFragment != null && signupFragment.isVisible())) {
             IntroductionFragment newFrag = new IntroductionFragment();
 

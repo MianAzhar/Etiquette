@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pk.EA.Scenario.app.Etiquette.R;
+import pk.EA.Scenario.app.Etiquette.activities.MainActivity;
 import pk.EA.Scenario.app.Etiquette.adapters.ListAdapter;
 import pk.EA.Scenario.app.Etiquette.utils.Etiquette;
 
@@ -78,6 +79,7 @@ public class LatestFragment extends android.support.v4.app.Fragment implements V
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Etiquette obj = objects.get(position);
 
+                MainActivity.etiquetteObj = obj;
                 Bundle question = new Bundle();
 
                 question.putSerializable("data", obj);
@@ -86,21 +88,21 @@ public class LatestFragment extends android.support.v4.app.Fragment implements V
                 {
                     SuggestedAnswerFragment newFrag = new SuggestedAnswerFragment();
 
-                    newFrag.setArguments(question);
+                    //newFrag.setArguments(question);
 
                     android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
                     getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    trans.addToBackStack("LatestFragment");
+                    //trans.addToBackStack("LatestFragment");
                     trans.replace(R.id.fragment_container, newFrag, "SuggestedAnswerFragment").commit();
                 }
                 else {
                     TravelQuestionFragment newFrag = new TravelQuestionFragment();
 
-                    newFrag.setArguments(question);
+                    //newFrag.setArguments(question);
 
                     android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
                     getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    trans.addToBackStack("LatestFragment");
+                    //trans.addToBackStack("LatestFragment");
                     trans.replace(R.id.fragment_container, newFrag, "QuestionFragment").commit();
                 }
             }
