@@ -114,8 +114,8 @@ public class Etiquette implements Serializable {
         this.opt1_count = opt1_count;
     }
 
-    private int opt1_count;
-    private int opt2_count;
+    private int opt1_count = 0;
+    private int opt2_count = 0;
 
     public int getOpt4_count() {
         return opt4_count;
@@ -141,7 +141,7 @@ public class Etiquette implements Serializable {
         this.opt2_count = opt2_count;
     }
 
-    private int opt3_count;
-    private int opt4_count;
+    private int opt3_count = 0;
+    private int opt4_count = 0;
 
 }

@@ -64,7 +64,7 @@
 
             <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:background="#ffffff"
                 android:text="Lorem ipsum dolor sit amet, qui omnium scripta praesent eu, per delenit periculis eu. Ad pro alienum apeirian splendide, eu putant torquatos philosophia quo. Ne eos commodo mentitum. Minimum petentium no usu, delectus invenire repudiare ea cum. Modus ipsum scribentur ei has, sensibus urbanitas ex pro. Mea te eros affert audire, nec at simul maiestatis incorrupte. Est at ponderum accusata scribentur. Suas eruditi forensibus sit ut, sumo imperdiet referrentur ex per, eam mundi verterem id. Utamur principes dissentiunt cu eam, audire praesent torquatos qui ea. Ad qui patrioque deseruisse. Propriae quaestio quaerendum usu no, errem postea eu pro. Nec no eius reque erant, et impedit maluisset dignissim quo. Est docendi fastidii te. Ius no nobis molestie facilisi, mollis iudicabit ea nam. Purto detraxit at mel. Vel ei everti definitiones, no mea dicunt efficiantur. Eum an probo solet conceptam. Eos tota omnis rebum ei, qui dicunt audiam in. Vis te quas facer ignota. Quo no aeque quaeque ancillae, habeo dicunt at vix. Has impedit volumus eu, mei ut viderer quaeque, melius vivendum ex pro. Ex quo atqui iisque, te sed duis soleat oporteat. Ut tota neglegentur mei, quaestio gloriatur ex per. Debitis admodum facilisis eu has, postea iracundia evertitur at pri, ullamcorper voluptatibus ei vim. Sit id eligendi expetenda, consul habemus efficiendi te vis. Ut elaboraret reprehendunt qui, at vix eruditi consulatu."
                 android:layout_margin="10dp"

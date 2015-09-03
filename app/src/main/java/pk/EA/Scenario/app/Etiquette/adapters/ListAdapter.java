@@ -41,7 +41,10 @@ public class ListAdapter extends ArrayAdapter<String>
         Picasso.with(context).load(resources.get(position).getUrl()).into(out);
 
         TextView textView = (TextView) row.findViewById(R.id.detailText);
-        textView.setText(textList.get(position));
+        if(!textList.get(position).equals("null"))
+            textView.setText(textList.get(position));
+        else
+            textView.setText("No Description");
 
         ImageView f1 = (ImageView)row.findViewById(R.id.fire1);
         ImageView f2 = (ImageView)row.findViewById(R.id.fire2);
@@ -58,35 +61,35 @@ public class ListAdapter extends ArrayAdapter<String>
 
         switch (rate)
         {
-            case 1:
+            case -2:
                 f1.setImageResource(R.drawable.firefill);
                 f2.setImageResource(R.drawable.fireempty);
                 f3.setImageResource(R.drawable.fireempty);
                 f4.setImageResource(R.drawable.fireempty);
                 f5.setImageResource(R.drawable.fireempty);
                 break;
-            case 2:
+            case -1:
                 f1.setImageResource(R.drawable.firefill);
                 f2.setImageResource(R.drawable.firefill);
                 f3.setImageResource(R.drawable.fireempty);
                 f4.setImageResource(R.drawable.fireempty);
                 f5.setImageResource(R.drawable.fireempty);
                 break;
-            case 3:
+            case 0:
                 f1.setImageResource(R.drawable.firefill);
                 f2.setImageResource(R.drawable.firefill);
                 f3.setImageResource(R.drawable.firefill);
                 f4.setImageResource(R.drawable.fireempty);
                 f5.setImageResource(R.drawable.fireempty);
                 break;
-            case 4:
+            case 1:
                 f1.setImageResource(R.drawable.firefill);
                 f2.setImageResource(R.drawable.firefill);
                 f3.setImageResource(R.drawable.firefill);
                 f4.setImageResource(R.drawable.firefill);
                 f5.setImageResource(R.drawable.fireempty);
                 break;
-            case 5:
+            case 2:
                 f1.setImageResource(R.drawable.firefill);
                 f2.setImageResource(R.drawable.firefill);
                 f3.setImageResource(R.drawable.firefill);

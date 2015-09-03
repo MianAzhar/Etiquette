@@ -10,7 +10,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,35 +84,35 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
 
         switch (rate)
         {
-            case 1:
+            case -2:
                 star1.setImageResource(R.drawable.starfill);
                 star2.setImageResource(R.drawable.star);
                 star3.setImageResource(R.drawable.star);
                 star4.setImageResource(R.drawable.star);
                 star5.setImageResource(R.drawable.star);
                 break;
-            case 2:
+            case -1:
                 star1.setImageResource(R.drawable.starfill);
                 star2.setImageResource(R.drawable.starfill);
                 star3.setImageResource(R.drawable.star);
                 star4.setImageResource(R.drawable.star);
                 star5.setImageResource(R.drawable.star);
                 break;
-            case 3:
+            case 0:
                 star1.setImageResource(R.drawable.starfill);
                 star2.setImageResource(R.drawable.starfill);
                 star3.setImageResource(R.drawable.starfill);
                 star4.setImageResource(R.drawable.star);
                 star5.setImageResource(R.drawable.star);
                 break;
-            case 4:
+            case 1:
                 star1.setImageResource(R.drawable.starfill);
                 star2.setImageResource(R.drawable.starfill);
                 star3.setImageResource(R.drawable.starfill);
                 star4.setImageResource(R.drawable.starfill);
                 star5.setImageResource(R.drawable.star);
                 break;
-            case 5:
+            case 2:
                 star1.setImageResource(R.drawable.starfill);
                 star2.setImageResource(R.drawable.starfill);
                 star3.setImageResource(R.drawable.starfill);
@@ -124,15 +127,16 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
                 star5.setImageResource(R.drawable.star);
                 break;
         }
-        
+
+        TextView quest = (TextView)getActivity().findViewById(R.id.question_text);
+
+        quest.setText(etiquette.getTitle());
+
+        /*
         TextView q1 = (TextView)getActivity().findViewById(R.id.option1);
         TextView q2 = (TextView)getActivity().findViewById(R.id.option2);
         TextView q3 = (TextView)getActivity().findViewById(R.id.option3);
         TextView q4 = (TextView)getActivity().findViewById(R.id.option4);
-
-        TextView quest = (TextView)getActivity().findViewById(R.id.question_text);
-
-        quest.setText(etiquette.getMinor_description());
 
         q1.setText(etiquette.getOpt1_text());
         q2.setText(etiquette.getOpt2_text());
@@ -144,10 +148,43 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
         q2.setOnClickListener(this);
         q3.setOnClickListener(this);
         q4.setOnClickListener(this);
+        */
+
+        ListView list = (ListView)getActivity().findViewById(R.id.optionList);
+
+        ArrayList array = new ArrayList();
+
+        if(!etiquette.getOpt1_text().equals("null")) {
+            array.add(etiquette.getOpt1_text());
+            if(!etiquette.getOpt2_text().equals("null")) {
+                array.add(etiquette.getOpt2_text());
+                if(!etiquette.getOpt3_text().equals("null")) {
+                    array.add(etiquette.getOpt3_text());
+                    if (!etiquette.getOpt4_text().equals("null"))
+                        array.add(etiquette.getOpt4_text());
+                }
+            }
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.option_list_item, R.id.optionTextView, array);
+
+        //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),  android.R.layout.two_line_list_item, array);
+
+        list.setAdapter(arrayAdapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TravelQuestionFragment newFrag = new TravelQuestionFragment();
+
+                new WebAPI().execute("http://etiquetteapp.azurewebsites.net/update_result_etiquette", Integer.toString(position + 1));
+            }
+        });
     }
 
     public void onClick(View view)
     {
+        /*
         if(view.getId() == R.id.option1) {
 
             new WebAPI().execute("http://etiquetteapp.azurewebsites.net/update_result_etiquette", "1");
@@ -157,7 +194,7 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
             android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             trans.addToBackStack(null);
             trans.replace(R.id.fragment_container, newFrag, "AnswerFragment").commit();
-            */
+
         }
         else if(view.getId() == R.id.option2)
         {
@@ -174,7 +211,8 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
             new WebAPI().execute("http://etiquetteapp.azurewebsites.net/update_result_etiquette", "4");
 
         }
-        else if(view.getId() == R.id.drawMenu)
+        */
+        if(view.getId() == R.id.drawMenu)
         {
             DrawerLayout d = (DrawerLayout)getActivity().findViewById(R.id.drawer);
 
@@ -279,10 +317,13 @@ public class TravelQuestionFragment extends android.support.v4.app.Fragment impl
 
                 JSONObject data = obj.getJSONObject("data");
 
-                etiquette.setOpt1_count(data.getInt("option_count_1"));
-                etiquette.setOpt2_count(data.getInt("option_count_2"));
-                etiquette.setOpt3_count(data.getInt("option_count_3"));
-                etiquette.setOpt4_count(data.getInt("option_count_4"));
+                try {
+                    etiquette.setOpt1_count(data.getInt("option_count_1"));
+                    etiquette.setOpt2_count(data.getInt("option_count_2"));
+                    etiquette.setOpt3_count(data.getInt("option_count_3"));
+                    etiquette.setOpt4_count(data.getInt("option_count_4"));
+                }
+                catch (Exception ex){}
 
                 Bundle bundle1 = new Bundle();
                 bundle1.putSerializable("data", etiquette);

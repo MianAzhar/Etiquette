@@ -54,7 +54,10 @@ public class SuggestedAnswerFragment extends android.support.v4.app.Fragment imp
         TextView answer = (TextView)getActivity().findViewById(R.id.answer_text);
 
         answer.setMovementMethod(new ScrollingMovementMethod());
-        answer.setText(etiquette.getDescription());
+        if(!(etiquette.getDescription().equals("null") || etiquette.getDescription().equals("")))
+            answer.setText(etiquette.getDescription());
+        else
+            answer.setText("No Description");
     }
 
     @Override

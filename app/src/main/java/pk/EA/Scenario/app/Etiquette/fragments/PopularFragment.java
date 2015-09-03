@@ -76,20 +76,33 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TravelQuestionFragment newFrag = new TravelQuestionFragment();
-
                 Etiquette obj = objects.get(position);
 
                 Bundle question = new Bundle();
 
                 question.putSerializable("data", obj);
 
-                newFrag.setArguments(question);
+                if(obj.getOpt1_text().equals("null"))
+                {
+                    SuggestedAnswerFragment newFrag = new SuggestedAnswerFragment();
 
-                android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
-                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                trans.addToBackStack(null);
-                trans.replace(R.id.fragment_container, newFrag, "QuestionFragment").commit();
+                    newFrag.setArguments(question);
+
+                    android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    trans.addToBackStack(null);
+                    trans.replace(R.id.fragment_container, newFrag, "SuggestedAnswerFragment").commit();
+                }
+                else {
+                    TravelQuestionFragment newFrag = new TravelQuestionFragment();
+
+                    newFrag.setArguments(question);
+
+                    android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
+                    getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    trans.addToBackStack(null);
+                    trans.replace(R.id.fragment_container, newFrag, "QuestionFragment").commit();
+                }
             }
         });
     }
@@ -220,19 +233,19 @@ public class PopularFragment extends android.support.v4.app.Fragment implements 
                 {
                     JSONObject temp = jsonArray.getJSONObject(i);
                     Etiquette et = new Etiquette();
-                    texts.add(temp.getString("minor_description"));
+                    texts.add(temp.getString("Title"));
 
-                    et.setDescription(temp.getString("description"));
-                    et.setId(temp.getInt("etiquetteId"));
-                    et.setMeter(temp.getString("meter"));
-                    et.setMinor_description(temp.getString("minor_description"));
-                    et.setOpt1_text(temp.getString("option_text_1"));
-                    et.setOpt2_text(temp.getString("option_text_2"));
-                    et.setOpt3_text(temp.getString("option_text_3"));
-                    et.setOpt4_text(temp.getString("option_text_4"));
-                    et.setUrl(temp.getString("image_video"));
-                    et.setTitle(temp.getString("title"));
-                    et.setType(temp.getString("type"));
+                    et.setDescription(temp.getString("Description"));
+                    et.setId(temp.getInt("Etiquette_Id"));
+                    et.setMeter(temp.getString("Meter"));
+                    et.setMinor_description(temp.getString("Minor_Description"));
+                    et.setOpt1_text(temp.getString("Option_Text_1"));
+                    et.setOpt2_text(temp.getString("Option_Text_2"));
+                    et.setOpt3_text(temp.getString("Option_Text_3"));
+                    et.setOpt4_text(temp.getString("Option_Text_4"));
+                    et.setUrl(temp.getString("Image_Video"));
+                    et.setTitle(temp.getString("Title"));
+                    et.setType(temp.getString("Type"));
 
                     objects.add(et);
                 }

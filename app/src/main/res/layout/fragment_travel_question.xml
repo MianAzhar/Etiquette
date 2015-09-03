@@ -217,13 +217,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/optionbg"
-            android:gravity="center"
-            android:weightSum="4"
+            
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/option"
+                android:id="@+id/optionList" />
+
+            <!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -277,7 +283,7 @@
                 android:layout_weight="0.9"
                 android:textSize="12sp"
                 android:id="@+id/option4"/>
-
+-->
         </LinearLayout>
 
     </LinearLayout>
