@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -194,6 +195,9 @@ public class SignUpFragment extends android.support.v4.app.Fragment implements
             }
             else if(message.equals("Signed up successfully"))
             {
+                DrawerLayout drawerLayout = (DrawerLayout)getActivity().findViewById(R.id.drawer);
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
                 SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = pref.edit();

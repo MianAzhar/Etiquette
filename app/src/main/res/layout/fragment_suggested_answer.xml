@@ -49,6 +49,11 @@
         android:layout_weight="9.2"
         android:orientation="vertical">
 
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="250dp"
@@ -56,6 +61,72 @@
             android:padding="0dip"
             android:src="@drawable/image_preview"
             android:id="@+id/suggestedAnswer_image"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/imageforegroundoverlay"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="It is often crowded in economy class in plane rides. We understand everyone wants to get as much leg room as possible."
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:id="@+id/question_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/travel_text"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/starfill"
+                        android:id="@+id/star1"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/starfill"
+                        android:id="@+id/star2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/star3"
+                        android:src="@drawable/starfill"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/star"
+                        android:id="@+id/star4"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/star"
+                        android:id="@+id/star5"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements
         signout.setOnClickListener(this);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
@@ -74,6 +74,25 @@ public class MainActivity extends AppCompatActivity implements
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         Toast.makeText(getApplicationContext(), "Home Selected", Toast.LENGTH_SHORT).show();
+                        /*
+                        /*
+                        FragmentManager fm = getSupportFragmentManager();
+                        int count = fm.getBackStackEntryCount();
+                        for(int i = 0; i < count; ++i) {
+                            fm.popBackStackImmediate();
+                        }
+
+
+                        Fragment popularFragment = (Fragment) getSupportFragmentManager().findFragmentByTag("PopularFragment");
+
+                        if(!(popularFragment != null && popularFragment.isVisible()))
+                        {
+                            getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                            PopularFragment newFrag = new PopularFragment();
+                            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+                            trans.replace(R.id.fragment_container, newFrag, "PopularFragment").commit();
+                        }
+                        */
 
                         return true;
 
@@ -113,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements
             trans.replace(R.id.fragment_container, newFrag, "PopularFragment").commit();
         }
         else {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             IntroductionFragment newFrag = new IntroductionFragment();
             //TravelQuestionFragment newFrag = new TravelQuestionFragment();
 
@@ -155,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements
                 drawerLayout.closeDrawers();
             }
 
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             LoginFragment newFrag = new LoginFragment();
 
             android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();

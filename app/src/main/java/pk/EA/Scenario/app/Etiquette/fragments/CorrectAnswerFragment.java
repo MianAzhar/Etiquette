@@ -72,6 +72,9 @@ public class CorrectAnswerFragment extends android.support.v4.app.Fragment imple
 
         ImageView menu = (ImageView)getActivity().findViewById(R.id.drawMenu);
         menu.setOnClickListener(this);
+
+        TextView gotoAnswer = (TextView)getActivity().findViewById(R.id.goto_answer_correct);
+        gotoAnswer.setOnClickListener(this);
     }
 
     @Override
@@ -84,6 +87,18 @@ public class CorrectAnswerFragment extends android.support.v4.app.Fragment imple
             NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.navigation_view);
             d.openDrawer(navigationView);
 
+        }
+        else if(view.getId() == R.id.goto_answer_correct){
+            SuggestedAnswerFragment newFrag = new SuggestedAnswerFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("data", etiquette);
+
+            newFrag.setArguments(bundle);
+
+            android.support.v4.app.FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
+            trans.addToBackStack(null);
+            trans.replace(R.id.fragment_container, newFrag, "SuggestedAnswerFragment").commit();
         }
     }
 

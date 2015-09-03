@@ -12,6 +12,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -530,6 +531,8 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             }
             else if(message.equals("Signed in successfully"))
             {
+                DrawerLayout drawerLayout = (DrawerLayout)getActivity().findViewById(R.id.drawer);
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
                 //new WebAPI().execute("http://etiquetteapp.azurewebsites.net/getAllEtiquettes");
 
                 SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -548,6 +551,9 @@ public class LoginFragment extends android.support.v4.app.Fragment implements
             }
             else if(message.equals("Signed in successfully, after Sign up"))
             {
+                DrawerLayout drawerLayout = (DrawerLayout)getActivity().findViewById(R.id.drawer);
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
                 SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = pref.edit();
