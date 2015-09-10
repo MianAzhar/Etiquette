@@ -9,10 +9,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 import pk.EA.Scenario.app.Etiquette.R;
+import pk.EA.Scenario.app.Etiquette.adapters.CategoriesAdapter;
 
 
 /**
@@ -45,6 +49,21 @@ public class CategoriesFragment extends android.support.v4.app.Fragment implemen
 
         latest.setOnClickListener(this);
         popular.setOnClickListener(this);
+
+        GridView gridView = (GridView)getActivity().findViewById(R.id.gridView);
+
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        arrayList.add("Category 1");
+        arrayList.add("Category 2");
+        arrayList.add("Category 3");
+        arrayList.add("Category 4");
+        arrayList.add("Category 5");
+        //arrayList.add("Category 6");
+
+        CategoriesAdapter adapter = new CategoriesAdapter(getActivity(), arrayList);
+
+        gridView.setAdapter(adapter);
     }
 
     @Override
